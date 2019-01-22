@@ -3,38 +3,10 @@ const Discord = require("discord.js");
 const client = new Discord.Client();
 const moment = require("moment");
 
-client.on('message', message => {
-    if(message.author.bot) return;
-    if (!points[message.author.id]) points[message.author.id] = {
-               points: 0,id: message.author.id
-    }
-    if(message.content === prefix + "give") {
 
-        const args = message.content.slice(prefix.length).trim().split(/ +/g);
-
-        const user = message.mentions.users.first() || client.users.get(args[0]);
-
-        if(!user) return message.reply("You must mention someone or give their ID!");
-
-        const pointsToAdd = parseInt(args[1], 10);
-
-        if(!pointsToAdd) return message.reply("You didn't tell me how many points to give...");
-
-        message.channel.send(`${user.tag} has received ${pointsToAdd} `);
-
-        let won = message.mentions.users.first().author;
-
-        points[won.id] += pointsToAdd;
-
-        fs.writeFile("./test.json", JSON.stringify(points,null,2), (err) => {
-
-            if(err) console.log(err)
-
-          })
         
         
-    }
-});
+
 
 
 const devs = ["486149211595866112"]
